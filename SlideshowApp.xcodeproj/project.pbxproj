@@ -13,6 +13,12 @@
 		0153F9062AC1C90F0004D293 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153F9042AC1C90F0004D293 /* Main.storyboard */; };
 		0153F9082AC1C9100004D293 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0153F9072AC1C9100004D293 /* Assets.xcassets */; };
 		0153F90B2AC1C9100004D293 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153F9092AC1C9100004D293 /* LaunchScreen.storyboard */; };
+		0153F9132AC1D4F20004D293 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153F9122AC1D4F20004D293 /* ResultViewController.swift */; };
+		018222542AC2BC9E00C4DC03 /* dog1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0182224F2AC2BC9E00C4DC03 /* dog1.jpg */; };
+		018222552AC2BC9E00C4DC03 /* dog3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 018222502AC2BC9E00C4DC03 /* dog3.jpg */; };
+		018222562AC2BC9E00C4DC03 /* dog5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 018222512AC2BC9E00C4DC03 /* dog5.jpg */; };
+		018222572AC2BC9E00C4DC03 /* dog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 018222522AC2BC9E00C4DC03 /* dog2.jpg */; };
+		018222582AC2BC9E00C4DC03 /* dog4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 018222532AC2BC9E00C4DC03 /* dog4.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		0153F9072AC1C9100004D293 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0153F90A2AC1C9100004D293 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0153F90C2AC1C9100004D293 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0153F9122AC1D4F20004D293 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		0182224F2AC2BC9E00C4DC03 /* dog1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog1.jpg; sourceTree = "<group>"; };
+		018222502AC2BC9E00C4DC03 /* dog3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog3.jpg; sourceTree = "<group>"; };
+		018222512AC2BC9E00C4DC03 /* dog5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog5.jpg; sourceTree = "<group>"; };
+		018222522AC2BC9E00C4DC03 /* dog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog2.jpg; sourceTree = "<group>"; };
+		018222532AC2BC9E00C4DC03 /* dog4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog4.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +71,16 @@
 				0153F8FE2AC1C90F0004D293 /* AppDelegate.swift */,
 				0153F9002AC1C90F0004D293 /* SceneDelegate.swift */,
 				0153F9022AC1C90F0004D293 /* ViewController.swift */,
+				0153F9122AC1D4F20004D293 /* ResultViewController.swift */,
 				0153F9042AC1C90F0004D293 /* Main.storyboard */,
 				0153F9072AC1C9100004D293 /* Assets.xcassets */,
 				0153F9092AC1C9100004D293 /* LaunchScreen.storyboard */,
 				0153F90C2AC1C9100004D293 /* Info.plist */,
+				0182224F2AC2BC9E00C4DC03 /* dog1.jpg */,
+				018222522AC2BC9E00C4DC03 /* dog2.jpg */,
+				018222502AC2BC9E00C4DC03 /* dog3.jpg */,
+				018222532AC2BC9E00C4DC03 /* dog4.jpg */,
+				018222512AC2BC9E00C4DC03 /* dog5.jpg */,
 			);
 			path = SlideshowApp;
 			sourceTree = "<group>";
@@ -126,8 +144,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0153F90B2AC1C9100004D293 /* LaunchScreen.storyboard in Resources */,
+				018222562AC2BC9E00C4DC03 /* dog5.jpg in Resources */,
+				018222572AC2BC9E00C4DC03 /* dog2.jpg in Resources */,
 				0153F9082AC1C9100004D293 /* Assets.xcassets in Resources */,
 				0153F9062AC1C90F0004D293 /* Main.storyboard in Resources */,
+				018222582AC2BC9E00C4DC03 /* dog4.jpg in Resources */,
+				018222552AC2BC9E00C4DC03 /* dog3.jpg in Resources */,
+				018222542AC2BC9E00C4DC03 /* dog1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +164,7 @@
 				0153F9032AC1C90F0004D293 /* ViewController.swift in Sources */,
 				0153F8FF2AC1C90F0004D293 /* AppDelegate.swift in Sources */,
 				0153F9012AC1C90F0004D293 /* SceneDelegate.swift in Sources */,
+				0153F9132AC1D4F20004D293 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
