@@ -9,9 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //画像のタップアクション
+    //画像のタップアクション（hhttps://seeku.hateblo.jp/entry/2016/07/02/175420）
     @IBAction func tapAction(_ sender: Any) {
-        //タップした画像を取得して、ResultViewで取得し、表示。
         // セグエを使用して画面を遷移
         performSegue(withIdentifier: "result", sender: nil)
     }
@@ -33,7 +32,8 @@ class ViewController: UIViewController {
         UIImage(named: "dog2.jpg")!,
         UIImage(named: "dog3.jpg")!,
         UIImage(named: "dog4.jpg")!,
-        UIImage(named: "dog5.jpg")!
+        UIImage(named: "dog5.jpg")!,
+        UIImage(named: "dog6.jpg")!
     ]
     
     //表示された時のfunc

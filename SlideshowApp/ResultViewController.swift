@@ -21,8 +21,8 @@ class ResultViewController: UIViewController {
         
         // 1画面目のViewControllerから遷移するときにprepareForSegueで
         // bigImageの値を新たに代入されたので、その値を表示する
-        //let result = x + y
         imageView.image = bigImage
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
     }
 
     /*
