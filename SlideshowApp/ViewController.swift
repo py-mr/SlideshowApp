@@ -36,17 +36,62 @@ class ViewController: UIViewController {
         UIImage(named: "dog6.jpg")!
     ]
     
+    @objc func trimming (image: UIImage) -> UIImage {
+        //https://www.yoheim.net/blog.php?q=20120503
+        //切り抜く位置を指定するCGRectを作成する。
+        //画像の中心部分を120*160で切り取る。
+        var posX: CGFloat
+        var posY: CGFloat
+        var trimArea: CGRect
+        if image.size.width > image.size.height*120/160 {
+            posX = (image.size.width - image.size.height*120/160)/2
+            posY = 0
+            trimArea = CGRectMake(posX, posY, image.size.height*120/160, image.size.height)
+        } else {
+            posX = 0
+            posY = (image.size.height - image.size.width*160/120)/2
+            trimArea = CGRectMake(posX, posY, image.size.width, image.size.width*160/120)
+        }
+        // CoreGraphicsの機能を用いて、切り抜いた画像を作成する。
+        var srcImageRef: CGImage
+        var trimmedImageRef: CGImage
+        var trimmedImage: UIImage
+        srcImageRef = image.cgImage!
+        trimmedImageRef = srcImageRef.cropping(to: trimArea)!
+        //trimmedImage = trimmedImageRef as! UIImage
+        trimmedImage = UIImage(cgImage: trimmedImageRef)
+        return trimmedImage
+    }
+    
+    //private var scrollView: UIScrollView!
+    let scrollView = UIScrollView()
+    private var offsetX: CGFloat = 0
+    
+    let wid :Double = 120.0
+    let hei :Double = 160.0
+    
     //表示された時のfunc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         //indexの画像をstoryboardの画像にセットする（nowIndexは0-4）
         picture.image = imageArray[nowIndex]
+        
+        // スクロールビューを追加
+        setUpImageView()
+        self.view.addSubview(scrollView)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     //戻るボタン
     @IBAction func backwardPicture(_ sender: Any) {
         downImage()
+        revscrollPage()
     }
     @IBOutlet weak var backwardPicture: UIButton!
     
@@ -54,7 +99,7 @@ class ViewController: UIViewController {
     @IBAction func playstopPicture(_ sender: Any) {
         // 動作中のタイマーを1つに保つために、 timer が存在しない場合だけ、タイマーを生成して動作させる
         if self.timer == nil {
-            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(upImage), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(up), userInfo: nil, repeats: true)
             playstopPicture.setTitle("停止", for: .normal)
             backwardPicture.isEnabled = false
             forwardPicture.isEnabled = false
@@ -72,11 +117,16 @@ class ViewController: UIViewController {
     //進むボタン
     @IBAction func forwardPicture(_ sender: Any) {
         upImage()
+        scrollPage()
     }
     @IBOutlet weak var forwardPicture: UIButton!
     
     
-    
+    //２枠とも画像を進める
+    @objc func up() {
+        upImage()
+        scrollPage()
+    }
     
     // 画像を進めるfunction
     @objc func upImage() {
@@ -102,6 +152,55 @@ class ViewController: UIViewController {
         picture.image = imageArray[nowIndex]
     }
 
+
+    // imageArrayの要素分UIImageViewをscrollViewに並べる
+    func setUpImageView() {
+        scrollView.frame = CGRect(x: 100.0, y: 100.0, width: wid, height: hei)
+        scrollView.contentSize = CGSize(width: wid * Double(imageArray.count)-1, height: hei)
+        scrollView.isPagingEnabled = true
+        for i in 0 ..< imageArray.count {
+            imageArray[i] = trimming(image: imageArray[i])
+            let imageView = UIImageView(image: imageArray[i])
+            imageView.frame = CGRect(x: wid * Double(i), y: 0.0, width: wid, height: hei)
+            imageView.contentMode = UIView.ContentMode.scaleAspectFit
+            scrollView.addSubview(imageView)
+        }
+    }
+    
+    // offsetXの値を更新することでページを移動する
+    @objc func scrollPage() {
+        // 画面の幅分offsetXを移動
+        self.offsetX += self.wid
+        // 3ページ目まで移動したら1ページ目まで戻る
+        if self.offsetX < self.wid * Double(imageArray.count) {
+            UIView.animate(withDuration: 0.3) {
+                self.scrollView.contentOffset.x = self.offsetX
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.offsetX = 0
+                self.scrollView.contentOffset.x = self.offsetX
+            }
+        }
+    }
+    
+    // offsetXの値を更新することでページを移動する
+    @objc func revscrollPage() {
+        // 画面の幅分offsetXを移動
+        self.offsetX -= self.wid
+        // -1ページ目まで移動したら6ページ目まで戻る
+        if self.offsetX < 0 {
+            UIView.animate(withDuration: 0.3) {
+                self.offsetX = self.wid * (Double(self.imageArray.count)-1.0)
+                self.scrollView.contentOffset.x = self.offsetX
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.scrollView.contentOffset.x = self.offsetX
+            }
+        }
+    }
+    
     //UIViewControllerのprepareメソッドをoverrideする
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // segueから遷移先のResultViewControllerを取得する
@@ -109,12 +208,8 @@ class ViewController: UIViewController {
         // 遷移先のResultViewControllerで宣言しているxに、入力された値を代入して渡す
         resultViewController.bigImage = picture.image
     }
-    
     //遷移先から戻るfunc
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         }
-    
-
-
 }
 

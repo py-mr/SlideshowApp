@@ -96,7 +96,7 @@
         <!--Result View Controller-->
         <scene sceneID="sbH-Gd-FuT">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="TIS-bi-1nv" customClass="ResultViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="TIS-bi-1nv" customClass="ResultViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n9e-5n-Y7J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
