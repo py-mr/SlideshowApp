@@ -9,8 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //画像のタップアクション（hhttps://seeku.hateblo.jp/entry/2016/07/02/175420）
+    //画像のタップアクション（https://seeku.hateblo.jp/entry/2016/07/02/175420）
     @IBAction func tapAction(_ sender: Any) {
+        // セグエを使用して画面を遷移
+        performSegue(withIdentifier: "result", sender: nil)
+    }
+    @IBAction func tapAction2(_ sender: Any) {
         // セグエを使用して画面を遷移
         performSegue(withIdentifier: "result", sender: nil)
     }
@@ -63,8 +67,9 @@ class ViewController: UIViewController {
         return trimmedImage
     }
     
-    //private var scrollView: UIScrollView!
-    let scrollView = UIScrollView()
+    @IBOutlet weak var scroll: UIScrollView!
+    
+    //let scrollView = UIScrollView()
     private var offsetX: CGFloat = 0
     
     let wid :Double = 120.0
@@ -80,7 +85,7 @@ class ViewController: UIViewController {
         
         // スクロールビューを追加
         setUpImageView()
-        self.view.addSubview(scrollView)
+        self.view.addSubview(scroll)
 
     }
 
@@ -155,15 +160,16 @@ class ViewController: UIViewController {
 
     // imageArrayの要素分UIImageViewをscrollViewに並べる
     func setUpImageView() {
-        scrollView.frame = CGRect(x: 100.0, y: 100.0, width: wid, height: hei)
-        scrollView.contentSize = CGSize(width: wid * Double(imageArray.count)-1, height: hei)
-        scrollView.isPagingEnabled = true
+        //storyboardでScrollViewを追加したので下記不要
+        //scroll.frame = CGRect(x: 100.0, y: 100.0, width: wid, height: hei)
+        //scroll.contentSize = CGSize(width: wid * Double(imageArray.count)-1, height: hei)
+        scroll.isPagingEnabled = true
         for i in 0 ..< imageArray.count {
             imageArray[i] = trimming(image: imageArray[i])
             let imageView = UIImageView(image: imageArray[i])
             imageView.frame = CGRect(x: wid * Double(i), y: 0.0, width: wid, height: hei)
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
-            scrollView.addSubview(imageView)
+            scroll.addSubview(imageView)
         }
     }
     
@@ -174,12 +180,12 @@ class ViewController: UIViewController {
         // 3ページ目まで移動したら1ページ目まで戻る
         if self.offsetX < self.wid * Double(imageArray.count) {
             UIView.animate(withDuration: 0.3) {
-                self.scrollView.contentOffset.x = self.offsetX
+                self.scroll.contentOffset.x = self.offsetX
             }
         } else {
             UIView.animate(withDuration: 0.3) {
                 self.offsetX = 0
-                self.scrollView.contentOffset.x = self.offsetX
+                self.scroll.contentOffset.x = self.offsetX
             }
         }
     }
@@ -192,11 +198,11 @@ class ViewController: UIViewController {
         if self.offsetX < 0 {
             UIView.animate(withDuration: 0.3) {
                 self.offsetX = self.wid * (Double(self.imageArray.count)-1.0)
-                self.scrollView.contentOffset.x = self.offsetX
+                self.scroll.contentOffset.x = self.offsetX
             }
         } else {
             UIView.animate(withDuration: 0.3) {
-                self.scrollView.contentOffset.x = self.offsetX
+                self.scroll.contentOffset.x = self.offsetX
             }
         }
     }

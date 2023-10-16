@@ -62,6 +62,16 @@
                                     <action selector="playstopPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wFf-hE-QH2"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHO-Kt-CTQ">
+                                <rect key="frame" x="146" y="166" width="120" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Ysi-es-ZGs"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Iqc-ct-ePn"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="K6t-pA-UQ6" appends="YES" id="WrS-aA-hrB"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.93718944745594912" green="0.95171393623057099" blue="0.9352920578999333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -81,6 +91,7 @@
                         <outlet property="forwardPicture" destination="BGB-kW-lVe" id="dcE-RO-fGf"/>
                         <outlet property="picture" destination="02I-Ey-iDn" id="e7C-Q9-rUc"/>
                         <outlet property="playstopPicture" destination="s59-rN-VMP" id="24t-k4-ivf"/>
+                        <outlet property="scroll" destination="DHO-Kt-CTQ" id="RnS-7u-tcl"/>
                         <segue destination="TIS-bi-1nv" kind="show" identifier="result" id="S7q-Ow-Fmh"/>
                     </connections>
                 </viewController>
@@ -88,6 +99,11 @@
                 <tapGestureRecognizer id="X6N-LU-GTK">
                     <connections>
                         <action selector="tapAction:" destination="BYZ-38-t0r" id="oKP-3R-4cJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="K6t-pA-UQ6">
+                    <connections>
+                        <action selector="tapAction2:" destination="BYZ-38-t0r" id="eoT-6p-Ilu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
