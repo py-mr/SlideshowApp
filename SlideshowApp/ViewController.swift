@@ -171,6 +171,7 @@ class ViewController: UIViewController {
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             scroll.addSubview(imageView)
         }
+        scroll.contentSize = CGSize(width: wid * Double(imageArray.count), height: hei)
     }
     
     // offsetXの値を更新することでページを移動する

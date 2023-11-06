@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +29,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="02I-Ey-iDn">
-                                <rect key="frame" x="147" y="368" width="120" height="160"/>
+                                <rect key="frame" x="237" y="368" width="120" height="160"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="5y1-aO-azO"/>
@@ -62,10 +63,27 @@
                                     <action selector="playstopPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wFf-hE-QH2"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHO-Kt-CTQ">
-                                <rect key="frame" x="146" y="166" width="120" height="159"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHO-Kt-CTQ">
+                                <rect key="frame" x="57" y="368" width="120" height="160"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-Im-CZ4" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="yPT-8Q-jeZ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="23r-UN-cLs"/>
+                                    <constraint firstItem="IBi-Im-CZ4" firstAttribute="height" secondItem="Iqc-ct-ePn" secondAttribute="height" id="Lmb-g3-pPj"/>
+                                    <constraint firstItem="IBi-Im-CZ4" firstAttribute="leading" secondItem="Ysi-es-ZGs" secondAttribute="leading" id="Tmw-ag-8eg"/>
+                                    <constraint firstItem="IBi-Im-CZ4" firstAttribute="trailing" secondItem="Ysi-es-ZGs" secondAttribute="trailing" id="ezM-LB-cs6"/>
+                                    <constraint firstItem="IBi-Im-CZ4" firstAttribute="top" secondItem="Ysi-es-ZGs" secondAttribute="top" id="ggH-Ut-qHz"/>
+                                    <constraint firstItem="IBi-Im-CZ4" firstAttribute="bottom" secondItem="Ysi-es-ZGs" secondAttribute="bottom" id="iBv-KZ-RV4"/>
+                                    <constraint firstAttribute="height" constant="160" id="oE1-2w-3aQ"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Ysi-es-ZGs"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Iqc-ct-ePn"/>
                                 <connections>
@@ -77,11 +95,13 @@
                         <color key="backgroundColor" red="0.93718944745594912" green="0.95171393623057099" blue="0.9352920578999333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="BGB-kW-lVe" firstAttribute="leading" secondItem="s59-rN-VMP" secondAttribute="trailing" constant="30" id="9aR-br-PyI"/>
-                            <constraint firstItem="02I-Ey-iDn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I6W-Qg-ITn"/>
+                            <constraint firstItem="BGB-kW-lVe" firstAttribute="centerX" secondItem="02I-Ey-iDn" secondAttribute="centerX" id="INy-WO-fj4"/>
                             <constraint firstItem="02I-Ey-iDn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YU7-e5-0Wr"/>
                             <constraint firstItem="s59-rN-VMP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YcE-0p-ypi"/>
+                            <constraint firstItem="DHO-Kt-CTQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dcQ-zR-3rH"/>
                             <constraint firstItem="s59-rN-VMP" firstAttribute="firstBaseline" secondItem="9L0-8U-FXm" secondAttribute="firstBaseline" id="mai-qR-HKK"/>
                             <constraint firstItem="s59-rN-VMP" firstAttribute="leading" secondItem="9L0-8U-FXm" secondAttribute="trailing" constant="30" id="qiN-9L-NQR"/>
+                            <constraint firstItem="DHO-Kt-CTQ" firstAttribute="centerX" secondItem="9L0-8U-FXm" secondAttribute="centerX" id="si9-h5-w2h"/>
                             <constraint firstItem="s59-rN-VMP" firstAttribute="top" secondItem="02I-Ey-iDn" secondAttribute="bottom" constant="20" id="v1a-8B-Fsa"/>
                             <constraint firstItem="BGB-kW-lVe" firstAttribute="firstBaseline" secondItem="9L0-8U-FXm" secondAttribute="firstBaseline" id="xvu-8I-qP7"/>
                         </constraints>
@@ -151,4 +171,9 @@
             <point key="canvasLocation" x="765.64885496183206" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
